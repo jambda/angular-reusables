@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
 
+## Contribute
+
+1. Create a branch
+2. Add your building block to `src/app/building-blocks/your-building-block`
+3. Create a Pull-Request
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
