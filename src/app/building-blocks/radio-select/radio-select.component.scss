@@ -1,0 +1,105 @@
+$base-spacing: 4px;
+
+.radioOptionsContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 1em;
+
+  & > * {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+
+  .container-item-xs {
+    flex: 1 1 0;
+  }
+}
+
+.radioOptionsContainer:active,
+.radioOptionsContainer:focus-within,
+.radioOptionsContainer:focus {
+  outline: none;
+  border-radius: $base-spacing;
+  background-image: switch-background(#005);
+  box-shadow: 0 0 2px 2px #003;
+
+  &.disabled,
+  &.tab-navigation-disabled {
+    box-shadow: none;
+  }
+}
+
+.radio-select-item {
+  height: 11 * $base-spacing;
+  width: 100%;
+  background-color: white;
+  border: solid 1px blue;
+  border-right: 0;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: blue;
+
+  &.last,
+  &.eachThird {
+    border-right: solid 1px blue;
+  }
+
+  &:not(.selected):hover {
+    .ds-text-standard {
+      color: darkblue;
+    }
+
+    border: 1px solid darkblue;
+  }
+}
+
+.first {
+  border-bottom-left-radius: $base-spacing;
+  border-top-left-radius: $base-spacing;
+}
+
+.last {
+  border-bottom-right-radius: $base-spacing;
+  border-top-right-radius: $base-spacing;
+}
+
+.selected {
+  background-color: blue;
+
+  &.ds-text-standard {
+    color: white;
+  }
+}
+
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+
+  &.disabled,
+  &.tab-navigation-disabled {
+    visibility: hidden;
+  }
+}
+
+#error {
+  height: 5 * $base-spacing;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > svg {
+    height: 4 * $base-spacing;
+    width: 4 * $base-spacing;
+    fill: red;
+  }
+
+  & > span {
+    color: red;
+    margin-left: 2 * $base-spacing;
+  }
+}
