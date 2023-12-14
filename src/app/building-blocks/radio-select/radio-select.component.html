@@ -1,0 +1,59 @@
+<div
+  [ngClass]="{
+    disabled: disabled,
+    'tab-navigation-disabled': tabNavigationDisabled
+  }"
+  class="radioOptionsContainer"
+  role="radiogroup"
+>
+  <div
+    *ngFor="
+      let option of options;
+      let i = index;
+      let first = first;
+      let last = last
+    "
+    [ngClass]="{ last: last, 'container-item-xs': options.length > 2 }"
+  >
+    <input
+      (click)="selectOption(option.key)"
+      (focus)="showFocusedOption(option.key)"
+      [attr.data-cy]="option.key"
+      [attr.name]="group"
+      [ngClass]="{
+        disabled: disabled,
+        'tab-navigation-disabled': tabNavigationDisabled
+      }"
+      data-event-action="selection"
+      id="{{ group }}-{{ option.key }}"
+      [attr.tabindex]="
+        defaultKey !== option.key && !hasBeenFocusedBefore ? -1 : 0
+      "
+      type="radio"
+    />
+    <label
+      [attr.data-cy]="'radio-select-option-' + option.key"
+      [ngClass]="{
+        first: first,
+        last: last,
+        selected: option.key === selected,
+        disabled: disabled
+      }"
+      class="con-btn-secondary btn radio-select-item ds-text-standard"
+      for="{{ group }}-{{ option.key }}"
+      id="{{ group }}"
+    >
+      {{ option.translationKey }}
+    </label>
+  </div>
+</div>
+<div id="error">
+  <svg *ngIf="errorTranslationKey" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M7.33337 10H8.66671V11.3334H7.33337V10ZM7.33337 4.66671H8.66671V8.66671H7.33337V4.66671ZM8.00004 1.33337C4.31337 1.33337 1.33337 4.33337 1.33337 8.00004C1.33337 9.76815 2.03575 11.4638 3.286 12.7141C3.90505 13.3331 4.63998 13.8242 5.44882 14.1592C6.25766 14.4943 7.12456 14.6667 8.00004 14.6667C9.76815 14.6667 11.4638 13.9643 12.7141 12.7141C13.9643 11.4638 14.6667 9.76815 14.6667 8.00004C14.6667 7.12456 14.4943 6.25766 14.1592 5.44882C13.8242 4.63998 13.3331 3.90505 12.7141 3.286C12.095 2.66694 11.3601 2.17588 10.5513 1.84084C9.74243 1.50581 8.87552 1.33337 8.00004 1.33337ZM8.00004 13.3334C6.58555 13.3334 5.229 12.7715 4.2288 11.7713C3.22861 10.7711 2.66671 9.41453 2.66671 8.00004C2.66671 6.58555 3.22861 5.229 4.2288 4.2288C5.229 3.22861 6.58555 2.66671 8.00004 2.66671C9.41453 2.66671 10.7711 3.22861 11.7713 4.2288C12.7715 5.229 13.3334 6.58555 13.3334 8.00004C13.3334 9.41453 12.7715 10.7711 11.7713 11.7713C10.7711 12.7715 9.41453 13.3334 8.00004 13.3334Z"
+    />
+  </svg>
+  <span *ngIf="errorTranslationKey" class="ds-error">{{
+    errorTranslationKey
+  }}</span>
+</div>

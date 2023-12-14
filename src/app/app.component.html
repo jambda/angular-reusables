@@ -2,7 +2,7 @@
   <mat-toolbar>
     <span>Angular Building Blocks</span>
     @for (menuItem of menuItems; track menuItem.label) {
-      <a mat-button [routerLink]="menuItem.path">{{ menuItem.label }}</a>
+    <a mat-button [routerLink]="menuItem.path">{{ menuItem.label }}</a>
     }
   </mat-toolbar>
 </nav>
