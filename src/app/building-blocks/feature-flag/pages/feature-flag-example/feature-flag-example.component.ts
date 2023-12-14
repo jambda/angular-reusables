@@ -17,6 +17,6 @@ export class FeatureFlagExampleComponent {
   }
 
   newSection() {
-    console.log('new article clicked')
+    console.log('new section clicked')
   }
 }
